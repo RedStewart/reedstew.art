@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">`
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,8 @@
     <link rel="shortcut icon" type="image/png" href="Images/favicon.png" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500" rel="stylesheet">
     <title>reedstew.art</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -15,18 +17,19 @@
 
 
     <div id="cornerElems">
-        <p id="corn1">About</p>
-        <p id="corn2">Skills</p>
-        <p id="corn3">Projects</p>
-        <p id="corn4">Contact</p>
+        <p id="corn1" onclick="buttonClick(this)">About</p>
+        <p id="corn2" onclick="buttonClick(this)">Skills</p>
+        <p id="corn3" onclick="buttonClick(this)">Projects</p>
+        <p id="corn4" onclick="buttonClick(this)">Contact</p>
     </div>
+
 
     <div id="divContent">
         <div>
             <p id="fullname">Reed Stewart</p>
             <hr>
             <p>Computer Science <span style="font-size: 10px; color: white">(soon to be)</span> graduate<br>
-                Aspiring full-stack Web Developer</p>
+                Aspiring Web Developer</p>
         </div>
 
         <div id="divLogoImage">
@@ -40,8 +43,14 @@
                 <img src="Images/github1.png" id="IMGgithub" class="colourChange" width="100" height="100">
             </a>
         </div>
-    </div>
+<br>
+        <div id="divMainContent">
 
+            <p>hello</p>
+
+
+        </div>
+    </div>
     <script type="text/javascript" src="JS/script.js"></script>
     <script type="text/javascript" src="JS/particles.js"></script>
     <script type="text/javascript" src="JS/app.js"></script>
