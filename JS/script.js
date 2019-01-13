@@ -2,12 +2,13 @@ var cornSwitch = false;
 
 function buttonClick(button) {
     var midContent = document.getElementById('divContent');
-    var mainContent = document.getElementById('mainDivContent');
+    var mainContent = document.getElementById('divMainContent');
     if (cornSwitch == true) {
         cornSwitch = false;
         console.log(cornSwitch);
         console.log("close window");
         $(midContent).animate({ 'min-height': '85vh' }, 1000);
+        $(mainContent).fadeOut(1000);
     }
     /*
         if (button.active == true) {
@@ -19,7 +20,8 @@ function buttonClick(button) {
         */
     else {
 
-        $(midContent).animate({ 'min-height': '40vh' }, 1000);
+        $(midContent).animate({ 'min-height': '35vh' }, 1000);
+        $(mainContent).fadeIn(1000);
         fadeInfo(button.innerHTML)        
         
         cornSwitch = true;
@@ -30,6 +32,8 @@ function buttonClick(button) {
 function fadeInfo(cornClick) {
 
     console.log("YEET " + cornClick);
+    document.getElementById('heading').innerHTML = cornClick;
+
 
     
     if (cornClick == 'About') {
