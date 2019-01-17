@@ -31,7 +31,7 @@ body{
 
 #heading {
     font-size: 40px;
-    margin: 0px 0px 20px 0px;
+    margin: 0px;
 }
 
 p#fullname {
@@ -52,6 +52,26 @@ p#fullname {
 
 #cornerElems {
     font-size: 20px;    
+}
+
+#projectContain {
+    margin: auto;
+    width: 65%;
+}
+
+.projectText {
+    display: inline-grid;
+    width: 49%;
+}
+
+#projectLeft {
+    border-right: 2px solid #eeeeee;
+    border-radius: 1px;
+}
+
+.alignImg {
+    vertical-align: middle;
+    margin-right: 5px; 
 }
 
 #corn1 {

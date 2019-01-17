@@ -10,18 +10,11 @@ function buttonClick(button) {
         $(midContent).animate({ 'min-height': '85vh' }, 1000);
         $(mainContent).fadeOut(1000);
     }
-    /*
-        if (button.active == true) {
-            console.log("close window");
-            
-            button.active = false;
-            $(midContent).animate({ 'min-height': '85vh' }, 1000);
-        }
-        */
     else {
 
         $(midContent).animate({ 'min-height': '35vh' }, 1000);
         $(mainContent).fadeIn(1000);
+
         fadeInfo(button.innerHTML)        
         
         cornSwitch = true;
@@ -30,24 +23,27 @@ function buttonClick(button) {
 }
 
 function fadeInfo(cornClick) {
-
-    console.log("YEET " + cornClick);
     document.getElementById('heading').innerHTML = cornClick;
-
-
+    var cornContent = document.getElementById("contentDescrip");
+    var cornImg = document.getElementById("headingImg");
     
     if (cornClick == 'About') {
-        console.log('This is the ' + cornClick + ' button');
-        //button.style.fontSize = 25 + 'px';
+        cornContent.innerHTML = "Hello my name is Reed Stewart.";
+        cornImg.src = "Images/about.png"
     }
     else if (cornClick == 'Skills') {
-        console.log('This is the ' + cornClick + ' button');
+        cornContent.innerHTML = "These are the current technologies i'm familiar with:";
+        cornImg.src = "Images/skills.png"
+
     }
     else if (cornClick == 'Projects') {
-        console.log('This is the ' + cornClick + ' button');
+        cornContent.innerHTML = "Over the past few years I have worked on multiple different projects and assignments, here are a few of my most recent.";
+        cornImg.src = "Images/projects.png"
+
     }
     else {
-        console.log('This is the ' + cornClick + ' button');
+        cornContent.innerHTML = "This is how to contact me.";
+        cornImg.src = "Images/contact.png"
     }
 }
 
