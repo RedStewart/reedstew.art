@@ -74,6 +74,31 @@ p#fullname {
     margin-right: 5px; 
 }
 
+#contentDescrip {
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+
+h1 u {
+    text-decoration: none;
+    font-weight: 300;
+    border-bottom: 2px solid #eeeeee;
+    margin-top: 0;
+}
+
+.projectList {
+    list-style-type: none;
+    margin-top: 0px;
+    padding-left: 0px;
+}
+
+.projectsItem {
+    position: relative;
+    text-decoration: none;
+    color: #FFB85F;
+}
+
+
 #corn1 {
     position: absolute;
     border-left: 2px solid white;

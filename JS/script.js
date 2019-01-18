@@ -29,21 +29,21 @@ function fadeInfo(cornClick) {
     
     if (cornClick == 'About') {
         cornContent.innerHTML = "Hello my name is Reed Stewart.";
-        cornImg.src = "Images/about.png"
+        cornImg.src = "Images/about.png";
     }
     else if (cornClick == 'Skills') {
-        cornContent.innerHTML = "These are the current technologies i'm familiar with:";
-        cornImg.src = "Images/skills.png"
+        cornContent.innerHTML = "These are the current technologies I'm familiar with:";
+        cornImg.src = "Images/skills.png";
 
     }
     else if (cornClick == 'Projects') {
         cornContent.innerHTML = "Over the past few years I have worked on multiple different projects and assignments, here are a few of my most recent.";
-        cornImg.src = "Images/projects.png"
+        cornImg.src = "Images/projects.png";
 
     }
     else {
         cornContent.innerHTML = "This is how to contact me.";
-        cornImg.src = "Images/contact.png"
+        cornImg.src = "Images/contact.png";
     }
 }
 
