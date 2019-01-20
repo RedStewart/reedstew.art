@@ -54,7 +54,7 @@ p#fullname {
     font-size: 20px;    
 }
 
-#projectContain {
+#cornContentContain {
     margin: auto;
     width: 65%;
 }
@@ -79,11 +79,14 @@ p#fullname {
     margin-bottom: 0px;
 }
 
-h1 u {
-    text-decoration: none;
+h1 {
     font-weight: 300;
-    border-bottom: 2px solid #eeeeee;
-    margin-top: 0;
+    text-decoration: underline;
+    text-decoration-color: #eeeeee;
+}
+
+li {
+    padding-bottom: 20px;
 }
 
 .projectList {
