@@ -21,6 +21,7 @@ body{
     text-align: center;
     min-height: 85vh;
     font-size: 20px;
+    margin-bottom: 30px;
 }
 
 #divMainContent {
@@ -103,12 +104,85 @@ li {
     color: #FFB85F;
 }
 
+
+/*#####     SKILLS ICONS     #####*/
+
+#iconDiv {
+padding-bottom: 20px;
+}
+
 svg.skillIcon {
     width: 128px;
     height: 128px;
-    opacity: 0.99;
+    opacity: 0.90;
+    fill: #eeeeee;
+    cursor: pointer;
 }
 
+.skillIcon path {
+    transition: 0.25s;
+}
+
+.skillIcon:hover path {
+    fill: #FFB85F;
+}
+
+.activeSkillIcon path {
+    fill: #FFB85F;
+}
+
+/*#####     SKILLS TEXT     #####*/
+
+#iconWordDiv {
+    display: none;
+    text-align: left;
+    float: right;   
+    margin-top: 15px; 
+    padding-right: 3%;
+}
+
+#gearIcon {
+    filter: invert(100%);
+    animation: rotation 7s infinite linear;
+    float: left;
+}
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+}
+
+h3#skillsTextTitle{
+    display: inline;
+    padding-left: 10px;
+    color: white;
+    font-size: 30px;
+    font-weight: 400;
+    text-align: left;
+}
+
+#skillsTextDescrip{
+    width: 400px;
+    margin-left: 50px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/*#####     CORNER BUTTONS     #####*/
+
+.cornerBtns {
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+p.cornerBtns:hover {
+    color: white;
+    background-color: #2d3249;
+}
 
 #corn1 {
     position: absolute;
