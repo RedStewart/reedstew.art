@@ -79,27 +79,31 @@ function buttonClick(button) {
     var mainContent = document.getElementById('divMainContent');
     if (cornSwitch == true) {
         var cornContent = document.getElementById("cornContentContain");
-        //get the divContent and set the inner html to ""
         cornSwitch = false;
         console.log(cornSwitch);
         console.log("close window");
         $(midContent).animate({ 'min-height': '85vh' }, 1000);
         $(mainContent).fadeOut(1000);
+        button.style.pointerEvents = 'none';
         setTimeout(function () {
             cornContent.innerHTML = "";
+            button.style.pointerEvents = '';
         }, 1100);
     }
     else {
-
         $(midContent).animate({ 'min-height': '35vh' }, 1000);
         $(mainContent).fadeIn(1000);
+        button.style.pointerEvents = 'none';
+        setTimeout(() => {
+            button.style.pointerEvents = '';
+        }, 1000);
         fadeInfo(button.innerHTML)
-
         cornSwitch = true;
         console.log(cornSwitch);
     }
 }
 
+//error when the buttons are clicked too fast, maybe cap pressing the buttons
 function fadeInfo(cornClick) {
     document.getElementById('heading').innerHTML = cornClick;
     var cornContent = document.getElementById("contentDescrip");
@@ -107,10 +111,34 @@ function fadeInfo(cornClick) {
     var mainDiv = document.getElementById("cornContentContain");
 
     if (cornClick == 'About') {
-        cornContent.innerHTML = "Hello my name is Reed Stewart.";
+        cornContent.innerHTML = "";
+        document.getElementById('mainTitle').style.display = 'none';
+        document.getElementById("divMainContent").style.background = 'none';
+
+        var aboutContentDiv = document.createElement('div');
+        mainDiv.appendChild(aboutContentDiv);
+
+        var aboutHeader = document.createElement('h4');
+        aboutHeader.id = "aboutHeader"
+        aboutHeader.innerHTML = "Hi, I'm Reed";
+        aboutContentDiv.appendChild(aboutHeader);
+
+        var aboutImg = document.createElement('img');
+        aboutImg.id = 'aboutAva';
+        aboutImg.setAttribute('src', 'Images/teeth.png');
+        aboutImg.setAttribute('alt', 'Avatar');
+        aboutContentDiv.appendChild(aboutImg);
+
+        var aboutText = document.createElement('p');
+        aboutText.id = 'aboutText';
+        aboutText.innerHTML = "I'm a front-end web developer from Tauranga, 22 years old, and a soon to be Computer Science graduate from Waikato University.<br /> This is my website showcasing the skills that I have and personal projects that I’ve created over my time at University.<br /> Hopefully you can gain an idea on my experience with different languages and other development tools.";
+        aboutContentDiv.appendChild(aboutText);
+
         cornImg.src = "Images/about.png";
     }
     else if (cornClick == 'Skills') {
+        checkTitleDisplay();
+
         cornContent.innerHTML = "";
         cornImg.src = "Images/skills.png";
 
@@ -125,8 +153,8 @@ function fadeInfo(cornClick) {
         gearIcon.setAttribute('heaight', '35');
 
         var skillsTextTitle = document.createElement('h3');
-        skillsTextTitle.id = 'skillsTextTitle';       
-        
+        skillsTextTitle.id = 'skillsTextTitle';
+
         var skillsTextDescrip = document.createElement('p');
         skillsTextDescrip.id = 'skillsTextDescrip';
 
@@ -165,78 +193,42 @@ function fadeInfo(cornClick) {
         initSkillIconListeners();
     }
     else if (cornClick == 'Projects') {
-        cornContent.innerHTML = "Over the past few years I have worked on multiple different projects and assignments, here are a few of my most recent.";
+        checkTitleDisplay();
+        var projectArr1 = [];
+        var projectArr2 = [];
+
         cornImg.src = "Images/projects.png";
 
-        //
-        var projectHead1 = document.createElement("div");
-        projectHead1.className = "projectText";
-        mainDiv.appendChild(projectHead1);
+        var mainColContain = document.createElement('div');
+        mainColContain.className = 'mainColContainer';
+        mainDiv.appendChild(mainColContain);
 
-        //
-        var projectHeadText1 = document.createElement("h1");
-        projectHeadText1.innerHTML = "Complete";
-        projectHead1.appendChild(projectHeadText1);
+        var projectContain1 = document.createElement('div');
+        projectContain1.className = 'projectContain';
+        mainColContain.appendChild(projectContain1);
 
-        var projectList1 = document.createElement("ul");
-        projectList1.className = "projectList";
-        projectList1.id = "projectLeft";
-        projectHead1.appendChild(projectList1);
+        var projectContain2 = document.createElement('div');
+        projectContain2.className = 'projectContain';
+        mainColContain.appendChild(projectContain2);
 
-        //
-        var listItem1 = document.createElement("li");
-        listItem1.innerHTML = "Converse-Off-White-Raffle-Script";
-        projectList1.appendChild(listItem1);
+        projectArr1.push(createProject('https://github.com/RedStewart/reedstew.art', 'reedstew.art', 'Reedstew', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus enim faucibus nulla bibendum, nec euismod est malesuada. Aliquam velit odio, aliquet a nisi ut, aliquet fringilla nunc.'));
+        projectArr1.push(createProject('https://github.com/RedStewart/npm-address-jig', 'npm-address-jig', 'Addyjig', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus enim faucibus nulla bibendum, nec euismod est malesuada. Aliquam velit odio, aliquet a nisi ut, aliquet fringilla nunc.'));
+        projectArr1.push(createProject('https://github.com/RedStewart/StockX-low-price-monitor', 'StockX-low-price-monitor', 'Stockx', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus enim faucibus nulla bibendum, nec euismod est malesuada. Aliquam velit odio, aliquet a nisi ut, aliquet fringilla nunc.'));
 
-        var listItem2 = document.createElement("li");
-        var listItem2a = document.createElement("a");
-        listItem2a.className = "projectsItem";
-        listItem2a.target = "_blank";
-        listItem2a.setAttribute("href", "https://www.npmjs.com/package/npm-address-jig");
-        listItem2a.innerHTML = "npm-address-jig";
-        listItem2.appendChild(listItem2a);
-        projectList1.appendChild(listItem2);
+        projectArr2.push(createProject('', 'Converse-OW-Raffle-Script', 'Converse', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus enim faucibus nulla bibendum, nec euismod est malesuada. Aliquam velit odio, aliquet a nisi ut, aliquet fringilla nunc.'));
+        projectArr2.push(createProject('', 'Supply-Store-Raffle-Script', 'Supply', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus enim faucibus nulla bibendum, nec euismod est malesuada. Aliquam velit odio, aliquet a nisi ut, aliquet fringilla nunc.'));
+        projectArr2.push(createProject('', 'Pokedex (Cap Harvester)', 'Pokedex', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus enim faucibus nulla bibendum, nec euismod est malesuada. Aliquam velit odio, aliquet a nisi ut, aliquet fringilla nunc.'));
 
-        var listItem3 = document.createElement("li");
-        var listItem3a = document.createElement("a");
-        listItem3a.className = "projectsItem";
-        listItem3a.target = "_blank";
-        listItem3a.setAttribute("href", "https://github.com/RedStewart/StockX-low-price-monitor");
-        listItem3a.innerHTML = "StockX-low-price-monitor";
-        listItem3.style.paddingBottom = "0px";
-        listItem3.appendChild(listItem3a);
-        projectList1.appendChild(listItem3);
-
-        ///
-        var projectHead2 = document.createElement("div");
-        projectHead2.className = "projectText";
-        mainDiv.appendChild(projectHead2);
-
-        //
-        var projectHeadText2 = document.createElement("h1");
-        projectHeadText2.innerHTML = "Under construction";
-        projectHead2.appendChild(projectHeadText2);
-
-        var projectList2 = document.createElement("ul");
-        projectList2.className = "projectList";
-        projectHead2.appendChild(projectList2);
-
-        //
-        var listItem4 = document.createElement("li");
-        var listItem4a = document.createElement("a");
-        listItem4a.className = "projectsItem";
-        listItem4a.target = "_blank";
-        listItem4a.setAttribute("href", "https://github.com/RedStewart/reedstew.art");
-        listItem4a.innerHTML = "reedstew.art";
-        listItem4.appendChild(listItem4a);
-        projectList2.appendChild(listItem4);
-
-        var listItem5 = document.createElement("li");
-        listItem5.innerHTML = "Supply-Store-Raffle-Script";
-        projectList2.appendChild(listItem5);
-
+        projectArr1.forEach((item) => {
+            projectContain1.appendChild(item);
+        })
+        projectArr2.forEach((item) => {
+            projectContain2.appendChild(item);
+        })
     }
     else {
+        checkTitleDisplay();
+
         cornContent.innerHTML = "This is how to contact me.";
         cornImg.src = "Images/contact.png";
     }
@@ -256,4 +248,51 @@ function drawSVG(idName, className, path) {
     svgJS.appendChild(svgJSPath);
 
     return svgJS;
+}
+
+function checkTitleDisplay() {
+    if (document.getElementById('mainTitle').style.display === 'none') {
+        document.getElementById('mainTitle').style.display = 'block';
+        document.getElementById("divMainContent").style.background = '#2d3249';
+    }
+}
+
+function createProject(link, title, iconName, description) {
+    if (link != '') {
+        var linkProjectItem = document.createElement('a');
+        linkProjectItem.setAttribute('target', '_blank');
+        linkProjectItem.setAttribute('href', link);
+
+        var projectItem = populateProject(title, iconName, description);
+        linkProjectItem.appendChild(projectItem);
+
+        return linkProjectItem;
+    } else {
+        var projectItem = populateProject(title, iconName, description);
+
+        return projectItem;
+    }
+}
+
+function populateProject(title, iconName, description) {
+    var project = document.createElement('div');
+    project.className = 'projectItem';
+
+    var image = document.createElement('img');
+    image.className = 'projectIcon';
+    image.src = 'Images/Icon' + iconName + '.png';
+    image.alt = iconName + ' Icon';
+
+    var header = document.createElement('h3');
+    header.className = 'projectTitle';
+    header.innerHTML = title;
+
+    var projectText = document.createElement('p');
+    projectText.innerHTML = description;
+
+    project.appendChild(image);
+    project.appendChild(header);
+    project.appendChild(projectText);
+
+    return project;
 }

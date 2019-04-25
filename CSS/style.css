@@ -6,6 +6,10 @@ body{
     margin: 0;
 }
 
+hr {
+    color: #eeeeee;
+}
+
 #particles-js {
     position: absolute;
     width: 100%;
@@ -62,11 +66,6 @@ p#fullname {
     width: 65%;
 }
 
-.projectText {
-    display: inline-grid;
-    width: 49%;
-}
-
 #projectLeft {
     border-right: 2px solid #eeeeee;
     border-radius: 1px;
@@ -82,26 +81,97 @@ p#fullname {
     margin-bottom: 0px;
 }
 
-h1 {
-    font-weight: 300;
-    text-decoration: underline;
-    text-decoration-color: #eeeeee;
-}
 
-li {
-    padding-bottom: 20px;
-}
+/*#####     PROJECT TAB     #####*/
 
-.projectList {
-    list-style-type: none;
-    margin-top: 0px;
-    padding-left: 0px;
+.projectContain {
+    display: table;
+    width: 100%;
+    margin: 0 auto;
+    table-layout: fixed;
+    border-spacing: 15px;
+    text-align: left;
 }
-
-.projectsItem {
+  
+.projectItem {
     position: relative;
+    display: table-cell;
+    border: 3px solid #212432;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px #161b30;
+    padding: 0 10px 0 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.projectTitle {
+    font-size: 1.5em;
+    color: #eeeeee;
+    font-weight: 500;
+}
+
+.projectIcon {
+    width: 40px;
+    height: 40px;
+    float: right;
+    padding-top: 2vh;
+    padding-right: 0.75vw;
+    filter: invert(1);
+    transform-origin: center center;
+}
+
+.projectText {
+    box-shadow: none;
+}
+
+@keyframes wiggle {
+    0% { transform: rotate(-3deg); }
+    100% { transform: rotate(3deg); }
+}
+
+.projectItem:hover {
+    bottom: 5px;
+    box-shadow: 1px 7px 4px #161b30;
+    opacity: 1;
+    filter: contrast(1.15);
+}
+
+.projectItem:hover .projectIcon {
+    animation: wiggle 0.2s infinite alternate;
+}
+  
+.mainColContainer:hover .projectItem:not(:hover) {
+    opacity: 0.5;
+}
+
+a {
+    color: inherit;
+    display: contents;
     text-decoration: none;
-    color: #FFB85F;
+}
+
+/*#####     ABOUT TAB     #####*/
+
+h4#aboutHeader {
+    letter-spacing: 1px;
+    margin: 10px 0 10px 0;
+    text-align: center;
+    font-size: 42px;
+    font-weight: 500;
+    color: #eeeeee;
+}
+
+#aboutText {
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20em;
+    font-size: 18px;
+}
+
+#aboutAva {
+    border-radius: 50%;
+    width: 200px;
 }
 
 
@@ -177,6 +247,9 @@ h3#skillsTextTitle{
 .cornerBtns {
     cursor: pointer;
     transition: 0.4s;
+    position: absolute;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 p.cornerBtns:hover {
@@ -185,38 +258,26 @@ p.cornerBtns:hover {
 }
 
 #corn1 {
-    position: absolute;
     border-left: 2px solid white;
     border-top: 2px solid white;
-    border-radius: 5px;
-    padding: 5px;
 	top: 0;
 	margin-left: 1%;
 }
 #corn2 {
-    position: absolute;
     border-right: 2px solid white;
     border-top: 2px solid white;
-    border-radius: 5px;
-    padding: 5px;
 	top: 0;
 	right: 1%;
 }
 #corn3 {
-    position: absolute;
     border-left: 2px solid white;
     border-bottom: 2px solid white;
-    border-radius: 5px;
-    padding: 5px;
 	bottom: 0%;
 	margin-left: 1%;
 }
 #corn4 {
-    position: absolute;
     border-right: 2px solid white;
     border-bottom: 2px solid white;
-    border-radius: 5px;
-    padding: 5px;
 	bottom: 0%;
 	right: 1%;
 }
