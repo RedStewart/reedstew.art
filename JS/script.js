@@ -4,6 +4,8 @@ function initSkillIconListeners() {
     var skillIcons = document.getElementsByClassName("skillIcon");
     var iconDiv = document.getElementById('iconDiv');
     var skillTextDiv = document.getElementById('iconWordDiv');
+    var skillTextTitle = document.getElementById('skillsTextTitle');
+    var skillText = document.getElementById('skillsTextDescrip');
     var fadeToggle = false;
     for (i = 0; i < skillIcons.length; i++) {
         skillIcons[i].addEventListener("click", function () {
@@ -34,34 +36,41 @@ function initSkillIconListeners() {
 
             if (selectedIconClass === 'svgJSGroup') {
                 console.log('You clicked the ' + selectedIconClass + ' group');
-                document.getElementById('skillsTextTitle').innerHTML = 'JavaScript';
-                document.getElementById('skillsTextDescrip').innerHTML =
+                skillTextTitle.innerHTML = 'JavaScript';
+                skillText.innerHTML =
                     "While studying I gained a large interest in JavaScript and the different areas that it has to offer." + "<br />" +
                     "I'm experienced in website based JavaScript projects, NodeJS applications, and just recently experimenting with ReactJS + Redux. " + "<br />" +
                     "In the future I'm wanting to progress from front-end work into a full stack framework i.e. the MEAN/MERN stack.";
 
             } else if (selectedIconClass === 'svgHTMLGroup') {
                 console.log('You clicked the ' + selectedIconClass + ' group');
-                document.getElementById('skillsTextTitle').innerHTML = 'HTML/CSS';
+                skillTextTitle.innerHTML = 'HTML/CSS';
+                skillText.innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus enim faucibus nulla bibendum, nec euismod est malesuada. Aliquam velit odio, aliquet a nisi ut, aliquet fringilla nunc.'
 
             } else if (selectedIconClass === 'svgPHPGroup') {
                 console.log('You clicked the ' + selectedIconClass + ' group');
-                document.getElementById('skillsTextTitle').innerHTML = 'PHP';
+                skillTextTitle.innerHTML = 'PHP';
+                skillText.innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus enim faucibus nulla bibendum, nec euismod est malesuada. Aliquam velit odio, aliquet a nisi ut, aliquet fringilla nunc.'
 
 
             } else if (selectedIconClass === 'svgOOPGroup') {
                 console.log('You clicked the ' + selectedIconClass + ' group');
-                document.getElementById('skillsTextTitle').innerHTML = 'Java & C#';
+                skillTextTitle.innerHTML = 'Java & C#';
+                skillText.innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus enim faucibus nulla bibendum, nec euismod est malesuada. Aliquam velit odio, aliquet a nisi ut, aliquet fringilla nunc.'
 
 
             } else if (selectedIconClass === 'svgPythonGroup') {
                 console.log('You clicked the ' + selectedIconClass + ' group');
-                document.getElementById('skillsTextTitle').innerHTML = 'Python';
+                skillTextTitle.innerHTML = 'Python';
+                skillText.innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus enim faucibus nulla bibendum, nec euismod est malesuada. Aliquam velit odio, aliquet a nisi ut, aliquet fringilla nunc.'
 
 
             } else if (selectedIconClass === 'svgVersionGroup') {
                 console.log('You clicked the ' + selectedIconClass + ' group');
-                document.getElementById('skillsTextTitle').innerHTML = 'Version Control';
+                skillTextTitle.innerHTML = 'Version Control';
+                skillText.innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus enim faucibus nulla bibendum, nec euismod est malesuada. Aliquam velit odio, aliquet a nisi ut, aliquet fringilla nunc.'
+
+
             } else {
                 $(skillTextDiv).fadeOut(250);
                 $(iconDiv).animate({ 'width': '65vw' }, 1000);
@@ -88,6 +97,7 @@ function buttonClick(button) {
         setTimeout(function () {
             cornContent.innerHTML = "";
             button.style.pointerEvents = '';
+            document.getElementById('contentDescrip').innerHTML = '';
         }, 1100);
     }
     else {
@@ -229,7 +239,54 @@ function fadeInfo(cornClick) {
     else {
         checkTitleDisplay();
 
-        cornContent.innerHTML = "This is how to contact me.";
+        var mainContact = document.createElement('div');
+        mainContact.className = "mainContact";
+        mainDiv.appendChild(mainContact);
+
+        var contactForm = document.createElement('form');
+        contactForm.className = "contactForm";
+        contactForm.method = "POST";
+        mainContact.appendChild(contactForm);
+
+        var contactName = document.createElement('input');
+        contactName.id = "contactName";
+        contactName.className = "contactInfo contactInput";
+        contactName.type = "text";
+        contactName.name = "name";
+        contactName.placeholder = "Name";
+        contactForm.appendChild(contactName);
+
+        var contactEmail = document.createElement('input');
+        contactEmail.id = "contactEmail";
+        contactEmail.className = "contactInfo contactInput";
+        contactEmail.type = "text";
+        contactEmail.name = "email";
+        contactEmail.placeholder = "Your e-mail";
+        contactForm.appendChild(contactEmail);
+
+        var div1 = document.createElement('div');
+        div1.style = "margin-top:20px;";
+        contactForm.appendChild(div1);
+
+        var contactMessage = document.createElement('textarea');
+        contactMessage.id = "contactMessage";
+        contactMessage.className = "contactInput";
+        contactMessage.name = "message";
+        contactMessage.placeholder = "Message";
+        div1.appendChild(contactMessage);
+
+        var div2 = document.createElement('div');
+        div2.style = "padding: 20px 0 20px 0;";
+        contactForm.appendChild(div2);
+
+        var submitBtn = document.createElement('button');
+        submitBtn.className = "submitBtn";
+        submitBtn.setAttribute("onclick", "sendEmail('contactForm.php', emailCB)");
+        submitBtn.type = "button";
+        submitBtn.name = "submit";
+        submitBtn.innerHTML = "Submit";
+        div2.appendChild(submitBtn);
+
         cornImg.src = "Images/contact.png";
     }
 }
@@ -295,4 +352,86 @@ function populateProject(title, iconName, description) {
     project.appendChild(projectText);
 
     return project;
+}
+
+function sendEmail(url, callback) {
+    var name = document.getElementById('contactName').value;
+    var email = document.getElementById('contactEmail').value;
+    var message = document.getElementById('contactMessage').value;
+    var postURL = "name=" + name + "&email=" + email + "&message=" + message;
+
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            callback(this)
+        }
+    }
+    xhttp.open("POST", url, true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+    xhttp.send(postURL);
+}
+
+function emailCB(xhttp) {
+    var response = xhttp.responseText;
+    var subBtn = document.getElementsByClassName("submitBtn")[0];
+    var inputArr = document.getElementsByClassName('contactInput');
+
+    //triggered if all fields aren't complete
+    if (response == 0) {
+        resetInput();
+        subBtn.innerHTML = "Please complete all the fields in the form";
+        for (var x = 0; x < inputArr.length; x++) {
+            inputArr[x].style.borderBottom = '2px solid red';
+            inputArr[x].style.borderLeft = '2px solid red';
+        }
+
+    } else if (response == 1) {
+        resetInput();
+        subBtn.innerHTML = "Please enter a valid email";
+        console.log('Please enter a valid email');
+        document.getElementById('contactEmail').style.borderBottom = '2px solid red';
+        document.getElementById('contactEmail').style.borderLeft = '2px solid red';
+
+    } else if (response == 2) {
+        console.log("Your email has been submitted!");
+        var cornBtns = document.getElementsByClassName('cornerBtns');
+        for (var i = 0; i < cornBtns.length; i++)
+            cornBtns[i].style.pointerEvents = 'none';
+
+        var inputArr = document.getElementsByClassName('contactInput');
+        for (var x = 0; x < inputArr.length; x++) {
+            inputArr[x].style.borderBottom = '2px solid green';
+            inputArr[x].style.borderLeft = '2px solid green';
+        }
+
+        subBtn.innerHTML = 'Your email has successfully been submitted!';
+        subBtn.disabled = true;
+        var input = document.getElementsByClassName('contactInput');
+        for (var x = 0; x < input.length; x++)
+            input[x].readOnly = true;
+
+        setTimeout(() => {
+            for (var i = 0; i < cornBtns.length; i++)
+                cornBtns[i].style.pointerEvents = '';
+            document.getElementById('corn4').click();
+        }, 4000);
+
+    } else {
+        console.log("There was an error with your email, please try again later");
+        subBtn.innerHTML = 'There was an error with your email, please try again later';
+        for (var x = 0; x < inputArr.length; x++) {
+            inputArr[x].style.borderBottom = '2px solid red';
+            inputArr[x].style.borderLeft = '2px solid red';
+        }
+        subBtn.disabled = true;
+    }
+}
+
+function resetInput() {
+    var inputArr = document.getElementsByClassName('contactInput');
+    for (var x = 0; x < inputArr.length; x++) {
+        inputArr[x].style.borderBottom = '2px solid #212432';
+        inputArr[x].style.borderLeft = '2px solid #212432';
+    }
 }

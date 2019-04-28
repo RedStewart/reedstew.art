@@ -77,8 +77,49 @@ p#fullname {
 }
 
 #contentDescrip {
-    font-size: 20px;
+    font-size: 16px;
     margin-bottom: 0px;
+    color: #eeeeee;
+}
+
+/*#####     CORNER BUTTONS     #####*/
+
+.cornerBtns {
+    cursor: pointer;
+    transition: 0.4s;
+    position: absolute;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+p.cornerBtns:hover {
+    color: white;
+    background-color: #2d3249;
+}
+
+#corn1 {
+    border-left: 2px solid white;
+    border-top: 2px solid white;
+	top: 0;
+	margin-left: 1%;
+}
+#corn2 {
+    border-right: 2px solid white;
+    border-top: 2px solid white;
+	top: 0;
+	right: 1%;
+}
+#corn3 {
+    border-left: 2px solid white;
+    border-bottom: 2px solid white;
+	bottom: 0%;
+	margin-left: 1%;
+}
+#corn4 {
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+	bottom: 0%;
+	right: 1%;
 }
 
 
@@ -242,42 +283,54 @@ h3#skillsTextTitle{
     line-height: 1.5;
 }
 
-/*#####     CORNER BUTTONS     #####*/
+/*#####     CONTACT FORM     #####*/
 
-.cornerBtns {
-    cursor: pointer;
-    transition: 0.4s;
-    position: absolute;
+.contactForm {
+    margin-top: 20px;
+}
+
+.contactInfo {
+    width: 25%;
+}
+
+.contactInput {
+    border: none;
+    border-bottom: 2px solid #212432;
+    border-left: 2px solid #212432;
+    border-bottom-left-radius: 10px;
+    color: #eeeeee;
+    padding: 10px;
+    box-shadow: 0px 2px 4px #161b30;
+    background: transparent;
+    font-size: 18px;
+    font-weight: 300;
+    position: relative;
+}
+
+#contactMessage {
+    width: 52%;
+    height: 100px;
+    resize: none;   
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.submitBtn {
+    position: relative;
+    border: none;
+    box-shadow: 0px 2px 4px #161b30;
     border-radius: 5px;
-    padding: 5px;
+    color: #eeeeee;
+    background: #212432;
+    font-size: 18px;
+    padding: 8px 12px 8px 12px;
+    transition: all 0.25s;
+    cursor: pointer;
 }
 
-p.cornerBtns:hover {
-    color: white;
-    background-color: #2d3249;
-}
-
-#corn1 {
-    border-left: 2px solid white;
-    border-top: 2px solid white;
-	top: 0;
-	margin-left: 1%;
-}
-#corn2 {
-    border-right: 2px solid white;
-    border-top: 2px solid white;
-	top: 0;
-	right: 1%;
-}
-#corn3 {
-    border-left: 2px solid white;
-    border-bottom: 2px solid white;
-	bottom: 0%;
-	margin-left: 1%;
-}
-#corn4 {
-    border-right: 2px solid white;
-    border-bottom: 2px solid white;
-	bottom: 0%;
-	right: 1%;
+.submitBtn:hover {
+    bottom: 1px;
+    box-shadow: 0px 3px 5px #161b30;
+    opacity: 1;
+    filter: contrast(1.15);
 }
