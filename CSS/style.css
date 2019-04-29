@@ -57,20 +57,6 @@ p#fullname {
     filter: brightness(1) invert(0);
 }   
 
-#cornerElems {
-    font-size: 20px;    
-}
-
-#cornContentContain {
-    margin: auto;
-    width: 65%;
-}
-
-#projectLeft {
-    border-right: 2px solid #eeeeee;
-    border-radius: 1px;
-}
-
 .alignImg {
     vertical-align: middle;
     margin-right: 5px; 
@@ -84,6 +70,15 @@ p#fullname {
 
 /*#####     CORNER BUTTONS     #####*/
 
+#cornerElems {
+    font-size: 20px;    
+}
+
+#cornContentContain {
+    margin: auto;
+    width: 65%;
+}
+
 .cornerBtns {
     cursor: pointer;
     transition: 0.4s;
@@ -93,31 +88,31 @@ p#fullname {
 }
 
 p.cornerBtns:hover {
-    color: white;
+    color: #eeeeee;
     background-color: #2d3249;
 }
 
 #corn1 {
-    border-left: 2px solid white;
-    border-top: 2px solid white;
+    border-left: 2px solid #eeeeee;
+    border-top: 2px solid #eeeeee;
 	top: 0;
 	margin-left: 1%;
 }
 #corn2 {
-    border-right: 2px solid white;
-    border-top: 2px solid white;
+    border-right: 2px solid #eeeeee;
+    border-top: 2px solid #eeeeee;
 	top: 0;
 	right: 1%;
 }
 #corn3 {
-    border-left: 2px solid white;
-    border-bottom: 2px solid white;
+    border-left: 2px solid #eeeeee;
+    border-bottom: 2px solid #eeeeee;
 	bottom: 0%;
 	margin-left: 1%;
 }
 #corn4 {
-    border-right: 2px solid white;
-    border-bottom: 2px solid white;
+    border-right: 2px solid #eeeeee;
+    border-bottom: 2px solid #eeeeee;
 	bottom: 0%;
 	right: 1%;
 }
@@ -219,7 +214,7 @@ h4#aboutHeader {
 /*#####     SKILLS ICONS     #####*/
 
 #iconDiv {
-padding-bottom: 20px;
+    padding-bottom: 20px;
 }
 
 svg.skillIcon {
@@ -270,7 +265,7 @@ svg.skillIcon {
 h3#skillsTextTitle{
     display: inline;
     padding-left: 10px;
-    color: white;
+    color: #eeeeee;
     font-size: 30px;
     font-weight: 400;
     text-align: left;
