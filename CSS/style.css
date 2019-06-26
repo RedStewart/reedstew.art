@@ -1,19 +1,24 @@
-body{
-    background-color: #212432;
-    color: #FFB85F;
-    font-family: 'Roboto';
+body {
+    color: #ffb85f;
+    font-family: "Raleway", sans-serif;
     font-weight: 300;
     margin: 0;
+    background: linear-gradient(132deg, #2a2d3f, #02061f);
+    background-size: 150% 150%;
 }
 
 hr {
     color: #eeeeee;
 }
 
+#mainDescrip {
+    font-size: 2.5vh;
+}
+
 #particles-js {
     position: absolute;
     width: 100%;
-    height: 99%;  
+    height: 99%;
     z-index: 0;
 }
 
@@ -33,33 +38,39 @@ hr {
     opacity: 1;
     display: none;
     text-align: center;
+    padding: 10px 0 10px 0;
 }
 
 #heading {
-    font-size: 40px;
+    font-size: 2rem;
+    font-weight: 500;
     margin: 0px;
 }
 
 p#fullname {
     font-weight: 300;
-    font-size: 60px;
+    font-size: 6vh;
     margin-bottom: 0;
 }
 
 .colourChange {
     filter: brightness(0) invert(1);
-    float: left;
-    margin-left: 10px;   
     transition: 0.2s;
+    width: 10vh;
+    height: 10vh;
+}
+
+#IMGlinkedIn {
+    margin-right: 10px;
 }
 
 .colourChange:hover {
     filter: brightness(1) invert(0);
-}   
+}
 
 .alignImg {
     vertical-align: middle;
-    margin-right: 5px; 
+    margin-right: 5px;
 }
 
 #contentDescrip {
@@ -71,7 +82,7 @@ p#fullname {
 /*#####     CORNER BUTTONS     #####*/
 
 #cornerElems {
-    font-size: 20px;    
+    font-size: 2.5vh;
 }
 
 #cornContentContain {
@@ -82,7 +93,7 @@ p#fullname {
 .cornerBtns {
     cursor: pointer;
     transition: 0.4s;
-    position: absolute;
+    position: fixed;
     border-radius: 5px;
     padding: 5px;
 }
@@ -95,28 +106,27 @@ p.cornerBtns:hover {
 #corn1 {
     border-left: 2px solid #eeeeee;
     border-top: 2px solid #eeeeee;
-	top: 0;
-	margin-left: 1%;
+    top: 0;
+    margin-left: 1%;
 }
 #corn2 {
     border-right: 2px solid #eeeeee;
     border-top: 2px solid #eeeeee;
-	top: 0;
-	right: 1%;
+    top: 0;
+    right: 1%;
 }
 #corn3 {
     border-left: 2px solid #eeeeee;
     border-bottom: 2px solid #eeeeee;
-	bottom: 0%;
-	margin-left: 1%;
+    bottom: 0%;
+    margin-left: 1%;
 }
 #corn4 {
     border-right: 2px solid #eeeeee;
     border-bottom: 2px solid #eeeeee;
-	bottom: 0%;
-	right: 1%;
+    bottom: 0%;
+    right: 1%;
 }
-
 
 /*#####     PROJECT TAB     #####*/
 
@@ -128,7 +138,7 @@ p.cornerBtns:hover {
     border-spacing: 15px;
     text-align: left;
 }
-  
+
 .projectItem {
     position: relative;
     display: table-cell;
@@ -138,10 +148,12 @@ p.cornerBtns:hover {
     padding: 0 10px 0 10px;
     cursor: pointer;
     transition: all 0.15s;
+    font-weight: 400;
+    font-size: 1.75vh;
 }
 
 .projectTitle {
-    font-size: 1.5em;
+    font-size: 2vh;
     color: #eeeeee;
     font-weight: 500;
 }
@@ -152,7 +164,6 @@ p.cornerBtns:hover {
     float: right;
     padding-top: 2vh;
     padding-right: 0.75vw;
-    filter: invert(1);
     transform-origin: center center;
 }
 
@@ -161,8 +172,12 @@ p.cornerBtns:hover {
 }
 
 @keyframes wiggle {
-    0% { transform: rotate(-3deg); }
-    100% { transform: rotate(3deg); }
+    0% {
+        transform: rotate(-3deg);
+    }
+    100% {
+        transform: rotate(3deg);
+    }
 }
 
 .projectItem:hover {
@@ -175,7 +190,15 @@ p.cornerBtns:hover {
 .projectItem:hover .projectIcon {
     animation: wiggle 0.2s infinite alternate;
 }
-  
+
+.projectItem:hover .codetrue {
+    filter: sepia() saturate(10000%) hue-rotate(30deg);
+}
+
+.projectItem:hover .codefalse {
+    filter: sepia() saturate(10000%) hue-rotate(330deg) brightness(150%);
+}
+
 .mainColContainer:hover .projectItem:not(:hover) {
     opacity: 0.5;
 }
@@ -192,24 +215,20 @@ h4#aboutHeader {
     letter-spacing: 1px;
     margin: 10px 0 10px 0;
     text-align: center;
-    font-size: 42px;
+    font-size: 4.5vh;
     font-weight: 500;
     color: #eeeeee;
 }
 
 #aboutText {
-    text-align: left;
-    margin-left: auto;
-    margin-right: auto;
-    width: 20em;
-    font-size: 18px;
+    text-align: center;
+    font-size: 2.5vh;
 }
 
 #aboutAva {
     border-radius: 50%;
-    width: 200px;
+    width: 22.5vh;
 }
-
 
 /*#####     SKILLS ICONS     #####*/
 
@@ -220,7 +239,7 @@ h4#aboutHeader {
 svg.skillIcon {
     width: 128px;
     height: 128px;
-    opacity: 0.90;
+    opacity: 0.9;
     fill: #eeeeee;
     cursor: pointer;
 }
@@ -230,11 +249,11 @@ svg.skillIcon {
 }
 
 .skillIcon:hover path {
-    fill: #FFB85F;
+    fill: #ffb85f;
 }
 
 .activeSkillIcon path {
-    fill: #FFB85F;
+    fill: #ffb85f;
 }
 
 /*#####     SKILLS TEXT     #####*/
@@ -242,8 +261,8 @@ svg.skillIcon {
 #iconWordDiv {
     display: none;
     text-align: left;
-    float: right;   
-    margin-top: 15px; 
+    float: right;
+    margin-top: 15px;
     padding-right: 3%;
 }
 
@@ -255,14 +274,14 @@ svg.skillIcon {
 
 @keyframes rotation {
     from {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
     to {
-      transform: rotate(359deg);
+        transform: rotate(359deg);
     }
 }
 
-h3#skillsTextTitle{
+h3#skillsTextTitle {
     display: inline;
     padding-left: 10px;
     color: #eeeeee;
@@ -271,7 +290,7 @@ h3#skillsTextTitle{
     text-align: left;
 }
 
-#skillsTextDescrip{
+#skillsTextDescrip {
     width: 400px;
     margin-left: 50px;
     font-size: 16px;
@@ -305,7 +324,7 @@ h3#skillsTextTitle{
 #contactMessage {
     width: 52%;
     height: 100px;
-    resize: none;   
+    resize: none;
     font-family: inherit;
     font-size: inherit;
 }
@@ -328,4 +347,87 @@ h3#skillsTextTitle{
     box-shadow: 0px 3px 5px #161b30;
     opacity: 1;
     filter: contrast(1.15);
+}
+
+.contactText {
+    color: #eeeeee;
+    font-size: 18px;
+    text-shadow: 2px 2px #161b30;
+    font-weight: 400;
+}
+
+/*#####     SCROLL BOX     #####*/
+
+.row {
+    display: flex;
+}
+
+.col {
+    flex: 1;
+}
+
+.card {
+    display: inline-block;
+    position: relative;
+    border: 3px solid #212432;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px #161b30;
+    background: transparent;
+    min-width: 80%;
+    width: 80%;
+    margin-right: 3px;
+    margin-left: 3px;
+    white-space: normal;
+}
+.scrollingWrapper {
+    position: relative;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.card {
+    display: inline-block;
+}
+
+img.projectImg {
+    width: 15vh;
+    height: 15vh;
+    margin-top: 1vh;
+}
+
+.row {
+    display: flex;
+}
+
+.col {
+    flex: 1;
+}
+
+h3.projectTitleMob {
+    font-size: 4vh;
+    margin-top: 2vh;
+    color: white;
+}
+
+p.projectTextMob {
+    color: #ffb85f;
+    font-weight: 500;
+    font-size: 2vh;
+    /*margin-bottom: 6vh;*/
+    margin: 0 1vh 6vh 1vh;
+}
+
+.projectFoot {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-left: 1vh;
+    margin-bottom: 1vh;
+    font-weight: 500;
+    color: salmon;
+}
+.codeAvail {
+    color: greenyellow;
 }

@@ -10,7 +10,7 @@ if(!empty($name) && !empty($email) && !empty($message)){
         //failed
         echo 1;
     } else {
-        $toEmail = "reed@nowlivemail.com";
+        $toEmail = "reedstewart@live.com";
         $subject = "Contact Request From ".$name;
         $body = "<h2>Contact Request</h2>
             <h4>Name:</h4><p>".$name."</p>
