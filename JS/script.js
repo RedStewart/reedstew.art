@@ -1,5 +1,5 @@
 import { fadeMainTitle, mobileProject } from './mobile.js';
-import { deskSkillsBuild } from './desktop.js';
+import { deskProjectsBuild, deskSkillsBuild } from './desktop.js';
 
 
 let mobileDevice = false;
@@ -212,82 +212,7 @@ function fadeInfo(cornClick) {
         } else {
             cornImg.src = "Images/projects.png";
             checkTitleDisplay();
-            var projectArr1 = [];
-            var projectArr2 = [];
-
-            var mainColContain = document.createElement("div");
-            mainColContain.className = "mainColContainer";
-            mainDiv.appendChild(mainColContain);
-
-            var projectContain1 = document.createElement("div");
-            projectContain1.className = "projectContain";
-            mainColContain.appendChild(projectContain1);
-
-            var projectContain2 = document.createElement("div");
-            projectContain2.className = "projectContain";
-            mainColContain.appendChild(projectContain2);
-
-            projectArr1.push(
-                createProject(
-                    "https://github.com/RedStewart/reedstew.art",
-                    true,
-                    "reedstew.art",
-                    "Reedstew",
-                    "A simple website built using HTML, CSS, JavaScript, and minor PHP. Manipulates the dom every time a button is selected."
-                )
-            );
-            projectArr1.push(
-                createProject(
-                    "https://github.com/RedStewart/npm-address-jig",
-                    true,
-                    "npm-address-jig",
-                    "Addyjig",
-                    "NPM package used to alter an address entered by the user. The package uses an array of set address suffixes which will output a random option. Used when creating raffle scripts."
-                )
-            );
-            projectArr1.push(
-                createProject(
-                    "https://github.com/RedStewart/StockX-low-price-monitor",
-                    true,
-                    "StockX-low-price-monitor",
-                    "Stockx",
-                    "NodeJS project created to monitor certain shoes and their prices. When a shoe price drops a discord notification will be sent to users alerting them. Currently rewriting to implement Javascripts async/await."
-                )
-            );
-
-            projectArr2.push(
-                createProject(
-                    "",
-                    false,
-                    "Converse-OW-Raffle-Script",
-                    "Converse",
-                    "Script used to make multiple entries for the Converse NZ/AU website. Successfully used the script to enter around 750 entries into the Off-White Converse Chuck 70 raffle, winning 11 pairs of shoes."
-                )
-            );
-            projectArr2.push(
-                createProject(
-                    "",
-                    false,
-                    "Supply-Store-Raffle-Script",
-                    "Supply",
-                    "Request based script used to enter into Supply Store raffles. The script implements the npm package ‘request’ using callbacks to navigate each page. Uses a captcha service to pass each captcha widget without any user input."
-                )
-            );
-            projectArr2.push(
-                createProject(
-                    "",
-                    false,
-                    "Pokedex (Cap Harvester)",
-                    "Pokedex",
-                    "Pokedex - Gotta captcha them all. A captcha harvester which implements a ReactJS front end built in an Electron app and uses ExpressJS to host the captcha widget page."
-                )
-            );
-
-            for (var i = 0; i < projectArr1.length; i++)
-                projectContain1.appendChild(projectArr1[i]);
-
-            for (var i = 0; i < projectArr2.length; i++)
-                projectContain2.appendChild(projectArr2[i]);
+            deskProjectsBuild(mainDiv);
         }
     } else {
         cornImg.src = "Images/contact.png";
@@ -352,23 +277,6 @@ function fadeInfo(cornClick) {
     }
 }
 
-// function drawSVG(idName, className, path) {
-//     var svgJS = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-//     svgJS.setAttribute("class", className);
-//     svgJS.setAttribute("id", idName);
-//     svgJS.setAttribute("viewBox", "0 0 128 128");
-
-//     var svgJSPath = document.createElementNS(
-//         "http://www.w3.org/2000/svg",
-//         "path"
-//     );
-//     svgJSPath.setAttribute("fill", "#EEEEEE");
-//     svgJSPath.setAttribute("d", path);
-
-//     svgJS.appendChild(svgJSPath);
-
-//     return svgJS;
-// }
 
 function checkTitleDisplay() {
     if (document.getElementById("mainTitle").style.display === "none") {
@@ -377,55 +285,6 @@ function checkTitleDisplay() {
     }
 }
 
-function createProject(link, codeAvail, title, iconName, description) {
-    if (link !== "") {
-        var linkProjectItem = document.createElement("a");
-        linkProjectItem.setAttribute("target", "_blank");
-        linkProjectItem.setAttribute("href", link);
-
-        var projectItem = populateProject(
-            title,
-            codeAvail,
-            iconName,
-            description
-        );
-        linkProjectItem.appendChild(projectItem);
-
-        return linkProjectItem;
-    } else {
-        var projectItem = populateProject(
-            title,
-            codeAvail,
-            iconName,
-            description
-        );
-
-        return projectItem;
-    }
-}
-
-function populateProject(title, codeAvail, iconName, description) {
-    var project = document.createElement("div");
-    project.className = "projectItem";
-
-    var image = document.createElement("img");
-    image.className = "projectIcon code" + codeAvail.toString();
-    image.src = "Images/Icon" + iconName + ".png";
-    image.alt = iconName + " Icon";
-
-    var header = document.createElement("h3");
-    header.className = "projectTitle";
-    header.innerHTML = title;
-
-    var projectText = document.createElement("p");
-    projectText.innerHTML = description;
-
-    project.appendChild(image);
-    project.appendChild(header);
-    project.appendChild(projectText);
-
-    return project;
-}
 
 function sendEmail(url, callback) {
     var name = document.getElementById("contactName").value;

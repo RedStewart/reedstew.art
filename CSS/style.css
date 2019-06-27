@@ -39,6 +39,7 @@ hr {
     display: none;
     text-align: center;
     padding: 10px 0 10px 0;
+    margin-bottom: 75px;
 }
 
 #heading {
@@ -49,7 +50,7 @@ hr {
 
 p#fullname {
     font-weight: 300;
-    font-size: 6vh;
+    font-size: 6.5vh;
     margin-bottom: 0;
 }
 
@@ -130,18 +131,31 @@ p.cornerBtns:hover {
 
 /*#####     PROJECT TAB     #####*/
 
-.projectContain {
-    display: table;
-    width: 100%;
-    margin: 0 auto;
-    table-layout: fixed;
-    border-spacing: 15px;
-    text-align: left;
+.projects {
+    display: grid;
+    grid-gap: 0.7rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media only screen and (max-width: 768px) {
+    .projects {
+        grid-template-columns: 1fr;
+    }
+}
+@media only screen and (min-width: 769px) and (max-width: 1170px) {
+    .projects {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media only screen and (min-width: 1171px) {
+    .projects {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 .projectItem {
+    text-align: left;
     position: relative;
-    display: table-cell;
     border: 3px solid #212432;
     border-radius: 10px;
     box-shadow: 0px 2px 4px #161b30;
@@ -149,11 +163,11 @@ p.cornerBtns:hover {
     cursor: pointer;
     transition: all 0.15s;
     font-weight: 400;
-    font-size: 1.75vh;
+    font-size: 1.9vh;
 }
 
 .projectTitle {
-    font-size: 2vh;
+    font-size: 2.5vh;
     color: #eeeeee;
     font-weight: 500;
 }
@@ -165,10 +179,6 @@ p.cornerBtns:hover {
     padding-top: 2vh;
     padding-right: 0.75vw;
     transform-origin: center center;
-}
-
-.projectText {
-    box-shadow: none;
 }
 
 @keyframes wiggle {
@@ -199,7 +209,7 @@ p.cornerBtns:hover {
     filter: sepia() saturate(10000%) hue-rotate(330deg) brightness(150%);
 }
 
-.mainColContainer:hover .projectItem:not(:hover) {
+.projects:hover .projectItem:not(:hover) {
     opacity: 0.5;
 }
 
