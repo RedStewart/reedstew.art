@@ -1,10 +1,15 @@
 import { fadeMainTitle, mobileProject } from './mobile.js';
-import { deskProjectsBuild, deskSkillsBuild } from './desktop.js';
+import { deskProjectsBuild, deskSkillsBuild, deskContactBuild } from './desktop.js';
 
 
 let mobileDevice = false;
 if (screen.width < 400 || screen.height < 900) {
     mobileDevice = true;
+}
+
+const cornerButtons = document.getElementsByClassName('cornerBtns');
+for (let i = 0; i < cornerButtons.length; i++) {
+    cornerButtons[i].addEventListener('click', function () { buttonClick(this) });
 }
 
 
@@ -61,7 +66,7 @@ function initSkillIconListeners() {
                 console.log("You clicked the " + selectedIconClass + " group");
                 skillTextTitle.innerHTML = "PHP";
                 skillText.innerHTML =
-                    "Minor background in PHP development, mainly using it to communicate with phpMyAdmin and MySQL.";
+                    "Minor background in PHP development, mainly using it to communicate with MySQL databases.";
             } else if (selectedIconClass === "svgOOPGroup") {
                 console.log("You clicked the " + selectedIconClass + " group");
                 skillTextTitle.innerHTML = "Java & C#";
@@ -88,13 +93,6 @@ function initSkillIconListeners() {
         });
     }
 }
-
-const cornerButtons = document.getElementsByClassName('cornerBtns');
-for (let i = 0; i < cornerButtons.length; i++) {
-    cornerButtons[i].addEventListener('click', function () { buttonClick(this) });
-}
-
-
 
 var currBtn;
 var cornSwitch = false;
@@ -166,7 +164,7 @@ function fadeInfo(cornClick) {
     console.log(cornClick);
     document.getElementById("heading").innerHTML = cornClick;
     var cornImg = document.getElementById("headingImg");
-    var mainDiv = document.getElementById("cornContentContain");
+    let mainDiv = document.getElementById("cornContentContain");
 
     if (cornClick == "About") {
         console.log("here");
@@ -205,8 +203,6 @@ function fadeInfo(cornClick) {
 
     } else if (cornClick == "Projects") {
         if (mobileDevice) {
-            console.log("yeet");
-            let mainDiv = document.getElementById("cornContentContain");
             mainDiv.style.width = "95%";
             mobileProject();
         } else {
@@ -217,63 +213,7 @@ function fadeInfo(cornClick) {
     } else {
         cornImg.src = "Images/contact.png";
         checkTitleDisplay();
-
-        var contactText = document.createElement("p");
-        contactText.className = "contactText";
-        contactText.innerHTML =
-            "Feel free to contact me through this form and I'll get back to you as soon as possible!";
-        mainDiv.appendChild(contactText);
-
-        var mainContact = document.createElement("div");
-        mainContact.className = "mainContact";
-        mainDiv.appendChild(mainContact);
-
-        var contactForm = document.createElement("form");
-        contactForm.className = "contactForm";
-        contactForm.method = "POST";
-        mainContact.appendChild(contactForm);
-
-        var contactName = document.createElement("input");
-        contactName.id = "contactName";
-        contactName.className = "contactInfo contactInput";
-        contactName.type = "text";
-        contactName.name = "name";
-        contactName.placeholder = "Name";
-        contactForm.appendChild(contactName);
-
-        var contactEmail = document.createElement("input");
-        contactEmail.id = "contactEmail";
-        contactEmail.className = "contactInfo contactInput";
-        contactEmail.type = "text";
-        contactEmail.name = "email";
-        contactEmail.placeholder = "Your e-mail";
-        contactForm.appendChild(contactEmail);
-
-        var div1 = document.createElement("div");
-        div1.style = "margin-top:20px;";
-        contactForm.appendChild(div1);
-
-        var contactMessage = document.createElement("textarea");
-        contactMessage.id = "contactMessage";
-        contactMessage.className = "contactInput";
-        contactMessage.name = "message";
-        contactMessage.placeholder = "Message";
-        div1.appendChild(contactMessage);
-
-        var div2 = document.createElement("div");
-        div2.style = "padding: 20px 0 20px 0;";
-        contactForm.appendChild(div2);
-
-        var submitBtn = document.createElement("button");
-        submitBtn.className = "submitBtn";
-        submitBtn.setAttribute(
-            "onclick",
-            "sendEmail('contactForm.php', emailCB)"
-        );
-        submitBtn.type = "button";
-        submitBtn.name = "submit";
-        submitBtn.innerHTML = "Submit";
-        div2.appendChild(submitBtn);
+        deskContactBuild(mainDiv);
     }
 }
 

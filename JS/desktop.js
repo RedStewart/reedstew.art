@@ -243,3 +243,65 @@ const deckBuildProject = (title, codeAvail, iconName, description) => {
 
     return project;
 }
+
+
+// ########## CONTACT ##########
+
+export const deskContactBuild = mainDiv => {
+    let contactText = document.createElement("p");
+    contactText.className = "contactText";
+    contactText.innerHTML =
+        "Feel free to contact me through this form and I'll get back to you as soon as possible!";
+    mainDiv.appendChild(contactText);
+
+    let mainContact = document.createElement("div");
+    mainContact.className = "mainContact";
+    mainDiv.appendChild(mainContact);
+
+    let contactForm = document.createElement("form");
+    contactForm.className = "contactForm";
+    contactForm.method = "POST";
+    mainContact.appendChild(contactForm);
+
+    let contactName = document.createElement("input");
+    contactName.id = "contactName";
+    contactName.className = "contactInfo contactInput";
+    contactName.type = "text";
+    contactName.name = "name";
+    contactName.placeholder = "Name";
+    contactForm.appendChild(contactName);
+
+    let contactEmail = document.createElement("input");
+    contactEmail.id = "contactEmail";
+    contactEmail.className = "contactInfo contactInput";
+    contactEmail.type = "text";
+    contactEmail.name = "email";
+    contactEmail.placeholder = "Your e-mail";
+    contactForm.appendChild(contactEmail);
+
+    let div1 = document.createElement("div");
+    div1.style = "margin-top:20px;";
+    contactForm.appendChild(div1);
+
+    let contactMessage = document.createElement("textarea");
+    contactMessage.id = "contactMessage";
+    contactMessage.className = "contactInput";
+    contactMessage.name = "message";
+    contactMessage.placeholder = "Message";
+    div1.appendChild(contactMessage);
+
+    let div2 = document.createElement("div");
+    div2.style = "padding: 20px 0 20px 0;";
+    contactForm.appendChild(div2);
+
+    let submitBtn = document.createElement("button");
+    submitBtn.className = "submitBtn";
+    submitBtn.setAttribute(
+        "onclick",
+        "sendEmail('contactForm.php', emailCB)"
+    );
+    submitBtn.type = "button";
+    submitBtn.name = "submit";
+    submitBtn.innerHTML = "Submit";
+    div2.appendChild(submitBtn);
+}
