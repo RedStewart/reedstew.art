@@ -137,22 +137,6 @@ p.cornerBtns:hover {
     grid-template-columns: repeat(3, 1fr);
 }
 
-@media only screen and (max-width: 768px) {
-    .projects {
-        grid-template-columns: 1fr;
-    }
-}
-@media only screen and (min-width: 769px) and (max-width: 1170px) {
-    .projects {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-@media only screen and (min-width: 1171px) {
-    .projects {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
 .projectItem {
     text-align: left;
     position: relative;
@@ -163,11 +147,11 @@ p.cornerBtns:hover {
     cursor: pointer;
     transition: all 0.15s;
     font-weight: 400;
-    font-size: 1.9vh;
+    font-size: 1.8vh;
 }
 
 .projectTitle {
-    font-size: 2.5vh;
+    font-size: 2.25vh;
     color: #eeeeee;
     font-weight: 500;
 }
@@ -241,6 +225,31 @@ h4#aboutHeader {
 }
 
 /*#####     SKILLS ICONS     #####*/
+
+.skillsGrid {
+    display: grid;
+    grid-gap: 0.7rem;
+    grid-template-columns: repeat(5, 1fr);
+    margin: 20px 0 10px 0;
+}
+
+.devicon {
+    font-size: 15vh;
+    background: #161a2f;
+    padding: 10px 0 10px 0;
+    border-radius: 15px;
+    color: #eeeeee;
+    cursor: pointer;
+    position: relative;
+}
+
+.deviconText {
+    display: block;
+    font-family: "Raleway", sans-serif;
+    font-size: 2.5vh;
+    padding-top: 5px;
+    color: #ffb85f;
+}
 
 #iconDiv {
     padding-bottom: 20px;
@@ -440,4 +449,29 @@ p.projectTextMob {
 }
 .codeAvail {
     color: greenyellow;
+}
+
+@media only screen and (max-width: 768px) {
+    .projects {
+        grid-template-columns: 1fr;
+    }
+    .skillsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media only screen and (min-width: 769px) and (max-width: 1170px) {
+    .projects {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .skillsGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media only screen and (min-width: 1171px) {
+    .projects {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .skillsGrid {
+        grid-template-columns: repeat(5, 1fr);
+    }
 }

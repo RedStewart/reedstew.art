@@ -1,0 +1,22 @@
+{
+  "name": "reedstew.art",
+  "version": "1.0.0",
+  "description": "Personal Website",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RedStewart/reedstew.art.git"
+  },
+  "author": "Reed Stewart",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RedStewart/reedstew.art/issues"
+  },
+  "homepage": "https://github.com/RedStewart/reedstew.art#readme",
+  "dependencies": {
+    "basiclightbox": "^5.0.2"
+  }
+}

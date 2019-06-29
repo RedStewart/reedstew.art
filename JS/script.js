@@ -198,8 +198,8 @@ function fadeInfo(cornClick) {
     } else if (cornClick == "Skills") {
         checkTitleDisplay();
         cornImg.src = "Images/skills.png";
-        deskSkillsBuild(mainDiv);
-        initSkillIconListeners();
+        //deskSkillsBuild(mainDiv);
+        //initSkillIconListeners();
 
     } else if (cornClick == "Projects") {
         if (mobileDevice) {
@@ -337,4 +337,16 @@ if (getBrowser().name === "IE") {
     document.getElementById("cornerElems").style.display = "none";
     document.getElementById("divLogoImage").style.display = "none";
     document.getElementById("mainDescrip").style.display = "none";
+}
+
+
+document.getElementById('yeethurr').onclick = e => {
+    e.preventDefault();
+
+    basicLightbox.create(`
+                    <h1>Form Field Values</h1>
+                    <p>Name:</p>
+                    <p>Email:</p>
+                    <p>Password:</p>
+                `).show()
 }
