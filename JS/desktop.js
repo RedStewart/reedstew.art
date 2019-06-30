@@ -121,12 +121,104 @@ const deskDrawSVG = (idName, className, path) => {
     return svgJS;
 }
 
+export const deskSkillsInit = () => {
+    let skillsArr = document.getElementsByClassName('devicon');
+    console.log(skillsArr);
+
+    for (let i = 0; i < skillsArr.length; i++) {
+        skillsArr[i].onclick = e => {
+            //console.log(e.target.classList[1]);
+            let skillsGroupSelected = e.target.classList[1];
+
+            let skillsGroup = document.getElementsByClassName(skillsGroupSelected);
+
+            for (let x = 0; x < skillsGroup.length; x++) {
+                skillsGroup[x].style.color = "red";
+            }
+            deskCreateSkills(skillsGroupSelected)
+
+
+        }
+    }
+
+}
+
+
+
+const deskCreateSkills = (selectedClass) => {
+
+    if (selectedClass === "skillsJS") {
+        deskCreateLightbox("JavaScript",
+            "While studying I gained a large interest in JavaScript and the different areas that it has to offer." +
+            "I'm experienced in website based JavaScript projects, NodeJS applications, and just recently experimenting" +
+            " with ReactJS + Redux. In the future I'm wanting to progress from front-end work into a full stack " +
+            "framework i.e. the MEAN/MERN stack."
+        );
+
+    } else if (selectedClass === "skillsHTML") {
+        deskCreateLightbox("HTML/CSS", "");
+
+    } else if (selectedClass === "skillsOOP") {
+        deskCreateLightbox("Java & C#", "");
+
+    } else if (selectedClass === "skillsPHP") {
+        deskCreateLightbox("PHP", "");
+
+    } else if (selectedClass === "skillsPyth") {
+        deskCreateLightbox("Python", "");
+
+    } else {
+        deskCreateLightbox("Version Control", "");
+    }
+
+
+}
+
+//creates a lightbox for the class and text passed in
+const deskCreateLightbox = (className, skillsText) => {
+    basicLightbox.create(`
+    <h2 class="skillsTitle">` + className + `</h1>
+    <p class="skillsText">` + skillsText + `</p>
+`).show()
+}
+
+//adds event listeners to each skill icon for hover
+export const skillsHoverListener = () => {
+    let skillsClassArr = ["skillsJS", "skillsHTML", "skillsOOP", "skillsPHP", "skillsPyth", "skillsVC"]
+
+    for (let x = 0; x < skillsClassArr.length; x++) {
+        let classNameArr = document.getElementsByClassName(skillsClassArr[x]);
+
+        for (let i = 0; i < classNameArr.length; i++) {
+            classNameArr[i].onmouseover = function () {
+                for (let i = 0; i < classNameArr.length; i++) {
+                    classNameArr[i].style.color = "#ffb85f";
+                    classNameArr[i].style.borderLeft = "8px solid #ffb85f";
+                    classNameArr[i].style.boxShadow = "0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)";
+                    classNameArr[i].style.animation = "bob 1.5s infinite alternate";
+                    classNameArr[i].childNodes[0].style.color = "#eeeeee";
+                }
+            };
+
+            classNameArr[i].onmouseout = function () {
+                for (let i = 0; i < classNameArr.length; i++) {
+                    classNameArr[i].style.backgroundColor = "#161a2f";
+                    classNameArr[i].style.color = "#EEEEEE";
+                    classNameArr[i].style.borderLeft = "none";
+                    classNameArr[i].style.boxShadow = "none";
+                    classNameArr[i].childNodes[0].style.color = "#ffb85f";
+                    classNameArr[i].style.animation = "none";
+                }
+            };
+        }
+    }
+
+}
+
 
 // ########## PROJECTS ##########
 
 export const deskProjectsBuild = mainDiv => {
-    let projectArr1 = [];
-    let projectArr2 = [];
     let projectArr = [];
 
     let projectsDiv = document.createElement("div");
@@ -200,7 +292,7 @@ const deskCreateProject = (link, codeAvail, title, iconName, description) => {
         linkProjectItem.setAttribute("target", "_blank");
         linkProjectItem.setAttribute("href", link);
 
-        let projectItem = deckBuildProject(
+        let projectItem = deskBuildProject(
             title,
             codeAvail,
             iconName,
@@ -210,7 +302,7 @@ const deskCreateProject = (link, codeAvail, title, iconName, description) => {
 
         return linkProjectItem;
     } else {
-        let projectItem = deckBuildProject(
+        let projectItem = deskBuildProject(
             title,
             codeAvail,
             iconName,
@@ -221,7 +313,7 @@ const deskCreateProject = (link, codeAvail, title, iconName, description) => {
     }
 }
 
-const deckBuildProject = (title, codeAvail, iconName, description) => {
+const deskBuildProject = (title, codeAvail, iconName, description) => {
     let project = document.createElement("div");
     project.className = "projectItem";
 

@@ -1,5 +1,5 @@
 import { fadeMainTitle, mobileProject } from './mobile.js';
-import { deskProjectsBuild, deskSkillsBuild, deskContactBuild } from './desktop.js';
+import { deskProjectsBuild, deskSkillsBuild, deskContactBuild, deskSkillsInit, skillsHoverListener } from './desktop.js';
 
 
 let mobileDevice = false;
@@ -200,6 +200,8 @@ function fadeInfo(cornClick) {
         cornImg.src = "Images/skills.png";
         //deskSkillsBuild(mainDiv);
         //initSkillIconListeners();
+        deskSkillsInit();
+        skillsHoverListener();
 
     } else if (cornClick == "Projects") {
         if (mobileDevice) {
@@ -339,14 +341,5 @@ if (getBrowser().name === "IE") {
     document.getElementById("mainDescrip").style.display = "none";
 }
 
+//run this function over every skills class
 
-document.getElementById('yeethurr').onclick = e => {
-    e.preventDefault();
-
-    basicLightbox.create(`
-                    <h1>Form Field Values</h1>
-                    <p>Name:</p>
-                    <p>Email:</p>
-                    <p>Password:</p>
-                `).show()
-}
