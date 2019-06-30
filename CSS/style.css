@@ -261,53 +261,25 @@ h4#aboutHeader {
 
 h2.skillsTitle {
     color: #eeeeee;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 5vh;
     letter-spacing: 1px;
+    display: inline;
+    margin-left: 1.5vh;
 }
 
 p.skillsText {
     color: #ffb85f;
+    font-weight: 400;
+    font-size: 3vh;
 }
 
-#iconDiv {
-    padding-bottom: 20px;
-}
-
-svg.skillIcon {
-    width: 128px;
-    height: 128px;
-    opacity: 0.9;
-    fill: #eeeeee;
-    cursor: pointer;
-}
-
-.skillIcon path {
-    transition: 0.25s;
-}
-
-.skillIcon:hover path {
-    fill: #ffb85f;
-}
-
-.activeSkillIcon path {
-    fill: #ffb85f;
-}
-
-/*#####     SKILLS TEXT     #####*/
-
-#iconWordDiv {
-    display: none;
-    text-align: left;
-    float: right;
-    margin-top: 15px;
-    padding-right: 3%;
-}
-
-#gearIcon {
+.gearIcon {
+    float: left;
     filter: invert(100%);
     animation: rotation 7s infinite linear;
-    float: left;
+    width: 6vh;
+    height: 6vh;
 }
 
 @keyframes rotation {
@@ -319,20 +291,21 @@ svg.skillIcon {
     }
 }
 
-h3#skillsTextTitle {
-    display: inline;
-    padding-left: 10px;
-    color: #eeeeee;
-    font-size: 30px;
-    font-weight: 400;
-    text-align: left;
+.basicLightbox__placeholder {
+    margin: 0 20% 0 20%;
 }
 
-#skillsTextDescrip {
-    width: 400px;
-    margin-left: 50px;
-    font-size: 16px;
-    line-height: 1.5;
+.lbClose {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    font-size: 5vh;
+    font-weight: 500;
+    color: #eeeeee;
+    cursor: pointer;
+    pointer-events: none;
+    padding: 5vh 5vh 0 0;
 }
 
 /*#####     CONTACT FORM     #####*/

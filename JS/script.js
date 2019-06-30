@@ -1,5 +1,5 @@
 import { fadeMainTitle, mobileProject } from './mobile.js';
-import { deskProjectsBuild, deskSkillsBuild, deskContactBuild, deskSkillsInit, skillsHoverListener } from './desktop.js';
+import { deskProjectsBuild, deskContactBuild, deskSkillsInit, deskSkillsHoverListener } from './desktop.js';
 
 
 let mobileDevice = false;
@@ -12,87 +12,6 @@ for (let i = 0; i < cornerButtons.length; i++) {
     cornerButtons[i].addEventListener('click', function () { buttonClick(this) });
 }
 
-
-function initSkillIconListeners() {
-    var skillIcons = document.getElementsByClassName("skillIcon");
-    var iconDiv = document.getElementById("iconDiv");
-    var skillTextDiv = document.getElementById("iconWordDiv");
-    var skillTextTitle = document.getElementById("skillsTextTitle");
-    var skillText = document.getElementById("skillsTextDescrip");
-    var fadeToggle = false;
-    for (let i = 0; i < skillIcons.length; i++) {
-        skillIcons[i].addEventListener("click", function () {
-            if (fadeToggle == false) {
-                $(iconDiv).animate({ width: "35vw" }, 1000);
-
-                setTimeout(function () {
-                    $(skillTextDiv).fadeIn(500);
-                    skillTextDiv.style.display = "inline-block";
-                }, 750);
-                fadeToggle = true;
-            }
-            var activeGroup = document.querySelectorAll(".activeSkillIcon");
-            var classIconFormat = this.getAttribute("class");
-            var selectedIconClass = classIconFormat.replace("skillIcon ", "");
-            var groupSelected = document.querySelectorAll(
-                "." + selectedIconClass
-            );
-
-            for (var x = 0; x < groupSelected.length; x++) {
-                groupSelected[x].classList.add("activeSkillIcon");
-            }
-
-            if (activeGroup != undefined) {
-                for (var x = 0; x < activeGroup.length; x++) {
-                    activeGroup[x].classList.remove("activeSkillIcon");
-                }
-            }
-
-            if (selectedIconClass === "svgJSGroup") {
-                console.log("You clicked the " + selectedIconClass + " group");
-                skillTextTitle.innerHTML = "JavaScript";
-                skillText.innerHTML =
-                    "While studying I gained a large interest in JavaScript and the different areas that it has to offer." +
-                    "<br />" +
-                    "I'm experienced in website based JavaScript projects, NodeJS applications, and just recently experimenting with ReactJS + Redux. " +
-                    "<br />" +
-                    "In the future I'm wanting to progress from front-end work into a full stack framework i.e. the MEAN/MERN stack.";
-            } else if (selectedIconClass === "svgHTMLGroup") {
-                console.log("You clicked the " + selectedIconClass + " group");
-                skillTextTitle.innerHTML = "HTML/CSS";
-                skillText.innerHTML =
-                    "Website construction using HTML5 and CSS3.";
-            } else if (selectedIconClass === "svgPHPGroup") {
-                console.log("You clicked the " + selectedIconClass + " group");
-                skillTextTitle.innerHTML = "PHP";
-                skillText.innerHTML =
-                    "Minor background in PHP development, mainly using it to communicate with MySQL databases.";
-            } else if (selectedIconClass === "svgOOPGroup") {
-                console.log("You clicked the " + selectedIconClass + " group");
-                skillTextTitle.innerHTML = "Java & C#";
-                skillText.innerHTML =
-                    "I have experience in object oriented languages like Java and C#. I've worked with and created programs that implement different Java algorithms like an external sort merge and data compression (LZ77, LZ78). I also have experience in Android app development using Android Studio.";
-            } else if (selectedIconClass === "svgPythonGroup") {
-                console.log("You clicked the " + selectedIconClass + " group");
-                skillTextTitle.innerHTML = "Python";
-                skillText.innerHTML =
-                    "Using Python and Selenium Webdriver to test out previous scripts that I've written. Also using Python for machine learning with the scikit-learn library.";
-            } else if (selectedIconClass === "svgVersionGroup") {
-                console.log("You clicked the " + selectedIconClass + " group");
-                skillTextTitle.innerHTML = "Version Control";
-                skillText.innerHTML =
-                    "Experienced in git for version control and source management. Using my own GitHub page to showcase my own personal projects.";
-            } else {
-                $(skillTextDiv).fadeOut(250);
-                $(iconDiv).animate({ width: "65vw" }, 1000);
-                setTimeout(function () {
-                    skillTextDiv.style.display = "none";
-                }, 500);
-                fadeToggle = false;
-            }
-        });
-    }
-}
 
 var currBtn;
 var cornSwitch = false;
@@ -198,10 +117,8 @@ function fadeInfo(cornClick) {
     } else if (cornClick == "Skills") {
         checkTitleDisplay();
         cornImg.src = "Images/skills.png";
-        //deskSkillsBuild(mainDiv);
-        //initSkillIconListeners();
-        deskSkillsInit();
-        skillsHoverListener();
+        deskSkillsInit(mainDiv);
+        deskSkillsHoverListener();
 
     } else if (cornClick == "Projects") {
         if (mobileDevice) {
