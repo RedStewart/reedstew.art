@@ -97,6 +97,7 @@ p#fullname {
     position: fixed;
     border-radius: 5px;
     padding: 5px;
+    font-weight: 500;
 }
 
 p.cornerBtns:hover {
@@ -426,7 +427,6 @@ p.projectTextMob {
     color: #ffb85f;
     font-weight: 500;
     font-size: 2vh;
-    /*margin-bottom: 6vh;*/
     margin: 0 1vh 6vh 1vh;
 }
 

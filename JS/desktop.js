@@ -1,3 +1,6 @@
+// ########## ABOUT ##########
+
+
 // ########## SKILLS ##########
 
 export const deskSkillsInit = mainDiv => {
@@ -85,7 +88,6 @@ const deskCreateSkills = selectedClass => {
 
 }
 
-//creates a lightbox for the class and text passed in
 const deskCreateLightbox = (className, skillsText) => {
     basicLightbox.create(`
     <img class="gearIcon" src="Images/gearIcon.png">
@@ -100,7 +102,6 @@ const deskCreateLightbox = (className, skillsText) => {
     fullLbDiv.appendChild(closeSpan);
 }
 
-//adds event listeners to each skill icon for hover
 export const deskSkillsHoverListener = () => {
     let skillsClassArr = ["skillsJS", "skillsHTML", "skillsOOP", "skillsPHP", "skillsPyth", "skillsVC"]
 
@@ -305,12 +306,87 @@ export const deskContactBuild = mainDiv => {
 
     let submitBtn = document.createElement("button");
     submitBtn.className = "submitBtn";
-    submitBtn.setAttribute(
-        "onclick",
-        "sendEmail('contactForm.php', emailCB)"
-    );
+    submitBtn.onclick = sendEmail('contactForm.php', emailCB);
     submitBtn.type = "button";
     submitBtn.name = "submit";
     submitBtn.innerHTML = "Submit";
     div2.appendChild(submitBtn);
+}
+
+function sendEmail(url, callback) {
+    let name = document.getElementById("contactName").value;
+    let email = document.getElementById("contactEmail").value;
+    let message = document.getElementById("contactMessage").value;
+    let postURL = "name=" + name + "&email=" + email + "&message=" + message;
+
+    let xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            callback(this);
+        }
+    };
+    xhttp.open("POST", url, true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send(postURL);
+}
+
+const emailCB = xhttp => {
+    let response = xhttp.responseText;
+    let subBtn = document.getElementsByClassName("submitBtn")[0];
+    let inputArr = document.getElementsByClassName("contactInput");
+
+    //triggered if all fields aren't complete
+    if (response == 0) {
+        resetInput();
+        subBtn.innerHTML = "Please complete all the fields in the form";
+        for (let x = 0; x < inputArr.length; x++) {
+            inputArr[x].style.borderBottom = "2px solid red";
+            inputArr[x].style.borderLeft = "2px solid red";
+        }
+    } else if (response == 1) {
+        resetInput();
+        subBtn.innerHTML = "Please enter a valid email";
+        document.getElementById("contactEmail").style.borderBottom =
+            "2px solid red";
+        document.getElementById("contactEmail").style.borderLeft =
+            "2px solid red";
+    } else if (response == 2) {
+        let cornBtns = document.getElementsByClassName("cornerBtns");
+        for (let i = 0; i < cornBtns.length; i++)
+            cornBtns[i].style.pointerEvents = "none";
+
+        let inputArr = document.getElementsByClassName("contactInput");
+        for (let x = 0; x < inputArr.length; x++) {
+            inputArr[x].style.borderBottom = "2px solid green";
+            inputArr[x].style.borderLeft = "2px solid green";
+        }
+
+        subBtn.innerHTML = "Your email has successfully been submitted!";
+        subBtn.disabled = true;
+        let input = document.getElementsByClassName("contactInput");
+        for (let x = 0; x < input.length; x++) input[x].readOnly = true;
+
+        setTimeout(function () {
+            for (let i = 0; i < cornBtns.length; i++)
+                cornBtns[i].style.pointerEvents = "";
+            document.getElementById("corn4").click();
+        }, 4000);
+    } else {
+        subBtn.innerHTML =
+            "There was an error with your email, please try again later";
+        for (let x = 0; x < inputArr.length; x++) {
+            inputArr[x].style.borderBottom = "2px solid red";
+            inputArr[x].style.borderLeft = "2px solid red";
+        }
+        subBtn.disabled = true;
+    }
+}
+
+const resetInput = () => {
+    var inputArr = document.getElementsByClassName("contactInput");
+    for (var x = 0; x < inputArr.length; x++) {
+        inputArr[x].style.borderBottom = "2px solid #212432";
+        inputArr[x].style.borderLeft = "2px solid #212432";
+    }
 }
