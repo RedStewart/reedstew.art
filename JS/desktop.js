@@ -306,11 +306,16 @@ export const deskContactBuild = mainDiv => {
 
     let submitBtn = document.createElement("button");
     submitBtn.className = "submitBtn";
-    submitBtn.onclick = sendEmail('contactForm.php', emailCB);
+    //submitBtn.onclick = sendEmail('contactForm.php', emailCB);
+    //submitBtn.onclick = function () { console.log("yeet") };
     submitBtn.type = "button";
     submitBtn.name = "submit";
     submitBtn.innerHTML = "Submit";
     div2.appendChild(submitBtn);
+
+    document.querySelector('.submitBtn').addEventListener('click', () => {
+        sendEmail('contactForm.php', emailCB)
+    });
 }
 
 function sendEmail(url, callback) {

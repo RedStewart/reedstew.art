@@ -263,7 +263,7 @@ h4#aboutHeader {
 h2.skillsTitle {
     color: #eeeeee;
     font-weight: 600;
-    font-size: 5vh;
+    font-size: 4vh;
     letter-spacing: 1px;
     display: inline;
     margin-left: 1.5vh;
@@ -272,15 +272,15 @@ h2.skillsTitle {
 p.skillsText {
     color: #ffb85f;
     font-weight: 400;
-    font-size: 3vh;
+    font-size: 2.5vh;
 }
 
 .gearIcon {
     float: left;
     filter: invert(100%);
     animation: rotation 7s infinite linear;
-    width: 6vh;
-    height: 6vh;
+    width: 5vh;
+    height: 5vh;
 }
 
 @keyframes rotation {
